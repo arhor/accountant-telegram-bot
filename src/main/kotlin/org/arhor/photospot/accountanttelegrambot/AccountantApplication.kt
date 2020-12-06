@@ -11,6 +11,10 @@ import org.telegram.telegrambots.extensions.bots.commandbot.commands.IBotCommand
 import org.telegram.telegrambots.meta.generics.TelegramBot
 import java.lang.invoke.MethodHandles
 
+fun main(args: Array<String>) {
+    runApplication<AccountantApplication>(*args)
+}
+
 @SpringBootApplication
 class AccountantApplication {
 
@@ -28,11 +32,4 @@ class AccountantApplication {
 
     @Bean
     fun stopCommand(): IBotCommand = StopCommand()
-
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-            runApplication<AccountantApplication>(*args)
-        }
-    }
 }

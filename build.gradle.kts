@@ -46,12 +46,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-val applicationMainClass = "org.arhor.photospot.accountanttelegrambot.AccountantApplication"
-
-springBoot {
-    mainClass.set(applicationMainClass)
-}
-
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
@@ -62,12 +56,6 @@ tasks {
 
     withType<Test> {
         useJUnitPlatform()
-    }
-
-    jar {
-        manifest {
-            attributes["Main-Class"] = applicationMainClass
-        }
     }
 
     bootRun {
