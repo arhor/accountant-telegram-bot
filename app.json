@@ -1,0 +1,10 @@
+{
+  "name": "Photospot Accountant Telegram Bot",
+  "description": "Simple Telegram-bot used to automate different daily duties.",
+  "keywords": [
+    "telegram",
+    "bot"
+  ],
+  "repository": "https://github.com/Arhor/accountant-telegram-bot",
+  "image": "heroku/gradle"
+}
