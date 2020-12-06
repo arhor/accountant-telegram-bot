@@ -62,7 +62,8 @@ tasks {
         jvmArgs = listOf(
             "-XX:+UseSerialGC",
             "-XX:MaxRAM=100m",
-            "-Xss512k"
+            "-Xss512k",
+            "-Dspring.profiles.active=development"
         )
     }
 }
