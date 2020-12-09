@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "org.arhor.photospot"
-version = "0.0.1-SNAPSHOT"
+version = "0.1.0-SNAPSHOT"
 description = "accountant-telegram-bot"
 
 java {
@@ -32,12 +32,14 @@ configurations {
 }
 
 dependencies {
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-
     kapt("org.springframework:spring-context-indexer")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    implementation("com.google.api-client:google-api-client:${Versions.googleApiClient}")
+    implementation("com.google.apis:google-api-services-sheets:${Versions.googleApiSheets}")
+    implementation("com.google.auth:google-auth-library-oauth2-http:${Versions.googleOauthLib}")
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.telegram:telegrambots-spring-boot-starter:${Versions.telegrambots}")

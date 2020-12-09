@@ -1,1 +1,1 @@
-worker: java -jar -Dspring.profiles.active=production build/libs/accountant-telegram-bot-0.0.1-SNAPSHOT.jar
+worker: java -jar -Dspring.profiles.active=production build/libs/accountant-telegram-bot-0.1.0-SNAPSHOT.jar

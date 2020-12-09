@@ -8,7 +8,7 @@ import org.telegram.telegrambots.meta.api.objects.User
 import org.telegram.telegrambots.meta.bots.AbsSender
 import java.lang.invoke.MethodHandles
 
-class StopCommand : BotCommand("stop", "") {
+class StopCommand : BotCommand(COMMAND_NAME, COMMAND_DESC) {
 
     override fun execute(sender: AbsSender, user: User, chat: Chat, arguments: Array<String>) {
         sender.executeAsync(
@@ -23,6 +23,9 @@ class StopCommand : BotCommand("stop", "") {
     }
 
     companion object {
+        const val COMMAND_NAME = "stop"
+        const val COMMAND_DESC = ""
+
         @JvmStatic
         private val log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass())
     }
