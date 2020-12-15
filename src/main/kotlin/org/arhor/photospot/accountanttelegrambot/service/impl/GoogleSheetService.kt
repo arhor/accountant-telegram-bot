@@ -15,24 +15,19 @@ class GoogleSheetService(
 
     override fun append(range: String, value: Any, vararg other: Any) : ActionResult<String> {
         return actionResult {
-            appendInternal(
-                query(range),
-                dataRow(value, *other)
-            )
+            val dataRow = listOf(value, *other)
+            val dataFrame = listOf(dataRow)
+
+            appendInternal(range, ValueRange().setValues(dataFrame))
+
             "Record `${value}` was added to the table"
         }
-    }
-
-    private fun query(range: String): String = "'${tabName}'!${range}"
-
-    private fun dataRow(vararg values: Any): ValueRange {
-        return ValueRange().setValues(listOf(values.toList()))
     }
 
     private fun appendInternal(range: String, values: ValueRange): AppendValuesResponse? {
         return sheetsApi.spreadsheets()
             .values()
-            .append(sheetId, range, values)
+            .append(sheetId, "'${tabName}'!${range}", values)
             .setValueInputOption("RAW")
             .setInsertDataOption("INSERT_ROWS")
             .execute()

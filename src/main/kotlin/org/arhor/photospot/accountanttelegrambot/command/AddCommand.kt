@@ -52,7 +52,7 @@ class AddCommand(private val sheetService: SheetService) : BotCommand(COMMAND_NA
 
     companion object {
         const val COMMAND_NAME = "add"
-        const val COMMAND_DESC = "Use the following format: '/add contact, course, payment, total"
+        const val COMMAND_DESC = "Use the following format: /add contact, course, payment, total"
 
         const val DELIMITER = ","
         const val SPACE_HOLDER = "$$"
