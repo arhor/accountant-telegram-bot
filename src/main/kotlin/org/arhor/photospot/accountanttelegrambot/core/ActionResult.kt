@@ -16,7 +16,7 @@ sealed class ActionResult<out T> {
         override val isFailure = true
     }
 
-    override fun toString(): String {
+    final override fun toString(): String {
         return when (this) {
             is Success -> value?.toString()
                 ?: "success"
