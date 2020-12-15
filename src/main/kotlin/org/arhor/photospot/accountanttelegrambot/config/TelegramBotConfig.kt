@@ -1,10 +1,10 @@
 package org.arhor.photospot.accountanttelegrambot.config
 
 import org.arhor.photospot.accountanttelegrambot.command.AddCommand
-import org.arhor.photospot.accountanttelegrambot.service.impl.PhotospotAccountantBot
 import org.arhor.photospot.accountanttelegrambot.command.StartCommand
 import org.arhor.photospot.accountanttelegrambot.command.StopCommand
 import org.arhor.photospot.accountanttelegrambot.service.SheetService
+import org.arhor.photospot.accountanttelegrambot.service.impl.PhotospotAccountantBot
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

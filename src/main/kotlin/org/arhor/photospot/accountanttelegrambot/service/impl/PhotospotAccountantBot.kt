@@ -11,7 +11,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException
 import java.lang.invoke.MethodHandles
 
 class PhotospotAccountantBot(
-    commands: List<IBotCommand>,
+    commands: List<IBotCommand> = emptyList(),
     private val username: String,
     private val apitoken: String,
 ) : TelegramLongPollingCommandBot() {
@@ -33,7 +33,7 @@ class PhotospotAccountantBot(
                 execute(
                     SendMessage().apply {
                         chatId = it.chatId.toString()
-                        text = "Use the following format: '/add contact / course / payment / total'"
+                        text = "Type /help to see available commands."
                     }
                 )
             }
@@ -55,15 +55,19 @@ class PhotospotAccountantBot(
         val maxCommandLength = commands.map { it.commandIdentifier.length }.maxOrNull() ?: 0
 
         for (command in commands) {
-            val result = if (register(command)) "SUCCESS" else "FAILURE"
+            val result = register(command)
             val identifier = command.commandIdentifier
             val padding = " ".repeat(maxCommandLength - identifier.length) + "-"
-            log.debug("Registering command [{}] {} [{}]", identifier, padding, result)
+            log.debug(
+                "Registering command [{}] {} [{}]",
+                identifier,
+                padding,
+                if (result) "SUCCESS" else "FAILURE"
+            )
         }
     }
 
     companion object {
-        @JvmStatic
         private val log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass())
     }
 }
