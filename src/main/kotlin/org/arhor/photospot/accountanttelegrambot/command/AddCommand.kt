@@ -10,8 +10,9 @@ import org.telegram.telegrambots.meta.api.objects.User
 import org.telegram.telegrambots.meta.bots.AbsSender
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException
 import java.lang.invoke.MethodHandles
-import java.time.Clock
 import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class AddCommand(private val sheetService: SheetService) : BotCommand(COMMAND_NAME, COMMAND_DESC) {
 
@@ -22,7 +23,7 @@ class AddCommand(private val sheetService: SheetService) : BotCommand(COMMAND_NA
             data.isNotEmpty() -> {
                 sheetService.append(
                     range = "A1",
-                    value = LocalDateTime.now(Clock.systemUTC()).toString(),
+                    value = LocalDateTime.now(MINSK_TIME).format(FORMATTER),
                     other = data.toTypedArray()
                 )
             }
@@ -56,6 +57,9 @@ class AddCommand(private val sheetService: SheetService) : BotCommand(COMMAND_NA
         const val DELIMITER = ","
         const val SPACE_HOLDER = "$$"
         const val SPACE_SYMBOL = " "
+
+        private val MINSK_TIME = ZoneId.of("UTC+03:00:00")
+        private val FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")
 
         private val log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass())
     }
