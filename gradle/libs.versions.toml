@@ -1,0 +1,33 @@
+[versions]
+kotlin                       = "1.6.0"
+spring-boot                  = "2.5.6"
+spring-dependency-management = "1.0.11.RELEASE"
+google-api-client            = "1.31.1"
+google-api-sheets            = "v4-rev612-1.25.0"
+google-oauth-lib             = "0.22.1"
+telegrambots                 = "5.4.0"
+
+[libraries]
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
+
+spring-context-indexer = { module = "org.springframework:spring-context-indexer" }
+
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-boot-starter-telegrambots = { module = "org.telegram:telegrambots-spring-boot-starter", version.ref = "telegrambots" }
+
+google-api-client = { module = "com.google.api-client:google-api-client", version.ref = "google-api-client" }
+google-api-sheets = { module = "com.google.apis:google-api-services-sheets", version.ref = "google-api-sheets" }
+google-oauth-lib = { module = "com.google.auth:google-auth-library-oauth2-http", version.ref = "google-oauth-lib" }
+
+telegrambots-extensions = { module = "org.telegram:telegrambotsextensions", version.ref = "telegrambots" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot"}
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management"}

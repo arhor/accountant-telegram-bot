@@ -1,19 +1,23 @@
+@file:Suppress("DSL_SCOPE_VIOLATION")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot")           version Versions.springBoot
-    id("io.spring.dependency-management")    version Versions.springDepManagement
-    id("org.jetbrains.kotlin.jvm")           version Versions.kotlinGlobal
-    id("org.jetbrains.kotlin.kapt")          version Versions.kotlinGlobal
-    id("org.jetbrains.kotlin.plugin.spring") version Versions.kotlinGlobal
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.spring)
 }
 
 group = "org.arhor.photospot"
 description = "accountant-telegram-bot"
 
+val javaVersion = "17"
+
 java {
-    sourceCompatibility = JavaVersion.toVersion(Versions.javaGlobal)
-    targetCompatibility = JavaVersion.toVersion(Versions.javaGlobal)
+    sourceCompatibility = JavaVersion.toVersion(javaVersion)
+    targetCompatibility = JavaVersion.toVersion(javaVersion)
 }
 
 repositories {
@@ -31,27 +35,25 @@ configurations {
 }
 
 dependencies {
-    kapt("org.springframework:spring-context-indexer")
+    kapt(libs.spring.context.indexer)
 
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation(libs.kotlin.reflect)
+    implementation(libs.kotlin.stdlib.jdk8)
+    implementation(libs.google.api.client)
+    implementation(libs.google.api.sheets)
+    implementation(libs.google.oauth.lib)
+    implementation(libs.spring.boot.starter)
+    implementation(libs.spring.boot.starter.telegrambots)
+    implementation(libs.telegrambots.extensions)
 
-    implementation("com.google.api-client:google-api-client:${Versions.googleApiClient}")
-    implementation("com.google.apis:google-api-services-sheets:${Versions.googleApiSheets}")
-    implementation("com.google.auth:google-auth-library-oauth2-http:${Versions.googleOauthLib}")
-
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.telegram:telegrambots-spring-boot-starter:${Versions.telegrambots}")
-    implementation("org.telegram:telegrambotsextensions:${Versions.telegrambots}")
-
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(libs.spring.boot.starter.test)
 }
 
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs = listOf("-Xjsr305=strict")
-            jvmTarget = Versions.javaGlobal
+            jvmTarget = javaVersion
         }
     }
 
