@@ -9,7 +9,6 @@ plugins {
 }
 
 group = "org.arhor.photospot"
-version = "0.1.0-SNAPSHOT"
 description = "accountant-telegram-bot"
 
 java {
@@ -65,7 +64,10 @@ tasks {
             "-XX:+UseSerialGC",
             "-XX:MaxRAM=100m",
             "-Xss512k",
-            "-Dspring.profiles.active=development"
         )
+    }
+
+    wrapper {
+        gradleVersion = "7.3"
     }
 }
