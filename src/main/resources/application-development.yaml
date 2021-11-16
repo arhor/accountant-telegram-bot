@@ -1,0 +1,9 @@
+spring:
+  config:
+    import:
+      - optional:file:.env[.properties]
+
+logging:
+  level:
+    root: WARN
+    org.arhor.photospot: DEBUG

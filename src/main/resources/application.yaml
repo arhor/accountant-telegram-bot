@@ -1,0 +1,31 @@
+server:
+  port: ${PORT:5000}
+
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  application:
+    name: accountant-telegram-bot
+
+  profiles:
+    active: ${SPRING_ACTIVE_PROFILES:development}
+
+  messages:
+    basename: messages
+
+  output:
+    ansi:
+      enabled: detect
+
+telegram:
+  bot:
+    username: ${BOT_USERNAME}
+    apitoken: ${BOT_APITOKEN}
+
+google:
+  service-account: ${GOOGLE_SERVICE_ACCOUNT}
+  app-name: ${GOOGLE_APPNAME}
+  sheet-id: ${GOOGLE_SHEET_ID}
+  tab-name: ${GOOGLE_TAB_NAME}
